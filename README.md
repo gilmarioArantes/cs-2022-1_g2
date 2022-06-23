@@ -1,20 +1,20 @@
 ### cs-2022-1_g2
 Repositório definido para a manutenção do controle de versão dos artefatos gerados pelo **Grupo 2** na construção de uma API REST, durante o curso da disciplina **Construção de Software**, do quinto período do curso de **Engenharia de Software**, do **INF/UFG**, no semestre 2022/1.
 
-### Descrição do Produto:
+### Descrição do Produto: API para o gerenciamento de academias, na qual seria possível ter perfis de aluno (visualizar treinos), professor (cadastrar treinos, vincular treinos aos alunos) e administrador (visualizar treinos, professores, alunos, fazer edições gerais).
 
 #### Requisitos:
-1. Requisito/funcionalidade: (nome/descrição)
-2. Requisito/funcionalidade: (nome/descrição)
-3. Requisito/funcionalidade: (nome/descrição)
-4. Requisito/funcionalidade: (nome/descrição)
-5. Requisito/funcionalidade: (nome/descrição)
+1. Requisito/funcionalidade: autenticação e cadastro de professor (como administrador)
+2. Requisito/funcionalidade: cadastrar aluno (como administrador)
+3. Requisito/funcionalidade: cadastrar treino (como professor) 
+4. Requisito/funcionalidade: associação de treino e aluno (como professor)
+5. Requisito/funcionalidade: acesso ao treino (como aluno)
 
 ### Tecnologia empregada no desenvolvimento:
 
-### Banco de Dados:
+### Banco de Dados: PostgreSQL
 
-### Local de deploy:
+### Local de deploy: AWS
 
 ### Participantes:
 |#|Nome|Usuário|Papel|
