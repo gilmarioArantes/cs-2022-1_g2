@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using CS.Domain.Entidades;
+﻿using CS.Domain.Entidades;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +9,7 @@ namespace CS.Data
         private readonly CsDbContext _dbContext;
         private readonly UserManager<Usuario> _userManager;
         private readonly RoleManager<Perfil> _roleManager;
+
 
         public Seeder(CsDbContext dbContext, UserManager<Usuario> userManager, RoleManager<Perfil> roleManager)
         {
@@ -36,7 +35,19 @@ namespace CS.Data
         private void Seed()
         {
             SeedPerfilAdmin();
+            SeedPerfilProfessor();
             SeedAdmin();
+        }
+
+        private void SeedPerfilProfessor()
+        {
+            var perfil = new Perfil()
+            {
+                Name = "professor",
+                NormalizedName = "PROFESSOR"
+            };
+
+            _ = _roleManager.CreateAsync(perfil).Result;
         }
 
         private void SeedPerfilAdmin()
