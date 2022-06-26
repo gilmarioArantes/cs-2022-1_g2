@@ -1,0 +1,12 @@
+﻿version: '3.8'
+
+services:
+  
+  postgres:
+    container_name: cs-postgres
+    image: postgres:latest
+    hostname: localhost
+    ports:
+        - 5432:5432
+    environment:
+        - POSTGRES_PASSWORD=master
