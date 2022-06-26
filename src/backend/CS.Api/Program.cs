@@ -1,39 +1,16 @@
-using CS.Application.Interface;
-using CS.Application.Services;
-using CS.Core.Notificador;
-using CS.Data;
-using CS.Domain.Entidades;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using CS.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddDataProtection();
-
-builder.Services.AddIdentity<Usuario, Perfil>(config =>
-    {
-        config.Password.RequireUppercase = false;
-        config.Password.RequireDigit = false;
-        config.Password.RequireNonAlphanumeric = false;
-    })
-    .AddEntityFrameworkStores<CsDbContext>()
-    .AddDefaultTokenProviders();
-
-builder.Services.AddDbContext<CsDbContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<INotificador, Notificador>();
-builder.Services.AddScoped<Seeder>();
-builder.Services.AddScoped<IAutenticacaoService, AutenticacaoService>();
+builder.Services.AddIdentityConfiguration();
+builder.Services.AddSwaggerConfigurations();
+builder.Services.RegisterServices(builder.Configuration);
 
 var app = builder.Build();
-
-using (var scope = app.Services.CreateScope())
-{
-    var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
-    seeder.Migrate();
-}
+app.Migrate();
 
 if (app.Environment.IsDevelopment())
 {
@@ -43,7 +20,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
+
+app.UseCors(x => x
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
 
 app.MapControllers();
 
