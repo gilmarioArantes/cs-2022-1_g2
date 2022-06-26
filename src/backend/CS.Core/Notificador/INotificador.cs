@@ -12,6 +12,6 @@ namespace CS.Core.Notificador
         void AdicionarNotificacoes(IEnumerable<string> erros);
         bool PossuiNotificacao();
         IEnumerable<string> ObterErros();
-        void AddNotification(string erro);
+        void AdicionarNotificacao(string erro);
     }
 }

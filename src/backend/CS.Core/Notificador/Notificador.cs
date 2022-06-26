@@ -29,11 +29,11 @@ namespace CS.Core.Notificador
         {
             foreach (var erro in erros)
             {
-                AddNotification(erro);
+                AdicionarNotificacao(erro);
             }
         }
 
-        public void AddNotification(string erro)
+        public void AdicionarNotificacao(string erro)
         {
             _notificacoes.Add(new Notificacao(erro));
         }
