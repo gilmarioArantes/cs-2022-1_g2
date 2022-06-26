@@ -16,6 +16,11 @@ namespace CS.Data
         {
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -29,5 +34,6 @@ namespace CS.Data
         public DbSet<UsuarioPerfil> UsuarioPerfil { get; set; }
         public DbSet<UsuarioPermissao> UsuarioPermissao { get; set; }
         public DbSet<UsuarioToken> UsuarioToken { get; set; }
+        public DbSet<Professor> Professor { get; set; }
     }
 }
