@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS.Api", "CS.Api\CS.Api.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS.Core", "CS.Core\CS.Core.csproj", "{FEA20F58-5022-4650-8473-7BFBCAEF1BA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Data", "CS.Data\CS.Data.csproj", "{E2CC21D9-D476-48E2-AB67-53049A624FD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS.Data", "CS.Data\CS.Data.csproj", "{E2CC21D9-D476-48E2-AB67-53049A624FD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Application", "CS.Application\CS.Application.csproj", "{1F7FD888-13C2-4012-A84F-3938F64E33AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS.Application", "CS.Application\CS.Application.csproj", "{1F7FD888-13C2-4012-A84F-3938F64E33AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS.Domain", "CS.Domain\CS.Domain.csproj", "{3AA9F00C-933F-41BD-A81F-2A5AAA4B33D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS.Domain", "CS.Domain\CS.Domain.csproj", "{3AA9F00C-933F-41BD-A81F-2A5AAA4B33D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
