@@ -1,0 +1,36 @@
+﻿@page
+@model CS.Api.Pages.Cadastro.ProfessorModel
+@{
+    Layout = "_LayoutPage";
+    ViewData["tituloFuncao"] = "Professores";
+}
+
+<script type="text/template" id="TemplateDataNascimento"> 
+    ${formateData(row.DataNascimento)}
+</script>
+
+<div class="row">
+    <div class="col-xl-12">
+        <vc:grid options="@(Html.GridOptions(m => m.Professores)
+                                .AddColumn(c => c.Bound(m => m.Nome))
+                                .AddColumn(c => c.Bound(m => m.Cpf).Title("CPF"))
+                                .AddColumn(c => c.Bound(m => m.Email))
+                                .AddColumn(c => c.Template("#TemplateDataNascimento").Title("Data de nascimento"))
+                                .AddAction(a => a.Remover())
+                                .AddAction(a => a.Editar()))"></vc:grid>
+    </div>
+</div>
+
+<script defer>
+let professores;
+    EventDomContentLoaded(() => {
+        let professores = JSON.parse('@Html.Raw(ViewData["professores"])');
+        Grid_Professores.addRange(professores);
+
+        const botaoCadastrar = document.querySelector('.botao-cadastrar');
+        botaoCadastrar.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            window.location.href = '/Novo/ProfessorNovo';
+        });
+    });
+</script>
