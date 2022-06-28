@@ -1,0 +1,74 @@
+﻿@using System.Linq;
+@using System.Text.Json
+@{
+    var idGrid = "Grid_" + ViewData["id"];
+    var jsonPesquisePor = JsonSerializer.Serialize(ViewData["pesquisePor"] ?? new List<object>());
+    var permitePesquisar = (bool)ViewData["permitePesquisa"]!;
+}
+
+<input type='hidden' id="grid_params" value='@ViewBag.columnsParams'/>
+
+<style>
+    span {
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+    }
+</style>
+
+<div id="@idGrid" class="mt-2">
+    <div class="em-grid-loading d-none">Carregando...</div>
+    <div class="em-grid-container">
+        <input id="@ViewData["id"]_Datasource" name="@ViewData["name"]" type="hidden">
+        <div class="em-grid-header mb-3 em-grid-header-scroll)"></div>
+    @if (permitePesquisar)
+    {
+        <div class="em-grid-pesquisa row m-auto">
+            <div class="form-group col-xl-12 mb-1 mt-0 p-0 pesquisa-grid">
+                <input type="text" class="form-control em-grid-pesquisar" placeholder="Pesquisar">
+            </div>
+        </div>
+    }
+        <div class="em-grid-body-main">
+            <div class="em-grid-body" id="grid-body"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let grid_@ViewData["id"]
+    EventDomContentLoaded(() => {
+        grid_@ViewData["id"] = new Grid({
+            acoes: @Html.Raw(ViewData["acoes"]),
+            colunas: @Html.Raw(ViewData["columnsParams"]),
+            highlights: [],/*@Html.Raw(ViewData["highlights"]),*/
+            id: '@ViewData["id"]',
+            idPrefixado: '@idGrid',
+            ordenacaoPadraoCrescente: @((bool)ViewData["ordenacaoPadraoCrescente"]! ? "true" : "false"),
+            ordenacaoPadrao: @Html.Raw(ViewData["ordenacaoPadrao"]),
+            permiteUnicaSelecao:  @((bool)ViewData["permiteUnicaSelecao"]! ? "true" : "false"),
+            permiteMultiplaSelecao:  @((bool)ViewData["permiteMultiplaSelecao"]! ? "true" : "false"),
+            permiteMultiplaExclusao:  @((bool)ViewData["permiteMultiplaExclusao"]! ? "true" : "false"),
+            permitePesquisa: @((bool)ViewData["permitePesquisa"]! ? "true" : "false"),
+            pesquisePor: @Html.Raw(jsonPesquisePor)
+        }, []); 
+        @idGrid = grid_@ViewData["id"];
+    });
+    if (document.readyState === "interactive") {
+        grid_@ViewData["id"] = new Grid({
+             acoes: @Html.Raw(ViewData["acoes"]),
+             colunas: @Html.Raw(ViewData["columnsParams"]),
+             highlights: [],/*@Html.Raw(ViewData["highlights"]),*/
+             id: '@ViewData["id"]',
+             idPrefixado: '@idGrid',
+             ordenacaoPadraoCrescente: @((bool)ViewData["ordenacaoPadraoCrescente"]! ? "true" : "false"),
+             ordenacaoPadrao: @Html.Raw(ViewData["ordenacaoPadrao"]),
+             permiteUnicaSelecao:  @((bool)ViewData["permiteUnicaSelecao"]! ? "true" : "false"),
+             permiteMultiplaSelecao:  @((bool)ViewData["permiteMultiplaSelecao"]! ? "true" : "false"),
+             permiteMultiplaExclusao:  @((bool)ViewData["permiteMultiplaExclusao"]! ? "true" : "false"),
+             permitePesquisa: @((bool)ViewData["permitePesquisa"]! ? "true" : "false"),
+             pesquisePor: @Html.Raw(jsonPesquisePor)
+        }, []); 
+        @idGrid = grid_@ViewData["id"];
+    }
+</script>
