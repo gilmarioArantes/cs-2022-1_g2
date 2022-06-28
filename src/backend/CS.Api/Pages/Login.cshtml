@@ -1,0 +1,92 @@
+﻿@page
+@model CS.Api.Pages.LoginModel
+@{
+    Layout = "_Layout";
+}
+
+<div class="background-imagem"></div>
+<div class="d-none container-fluid py-5 m-0" id="container-login">
+@*<div class="container-fluid py-5 m-0" id="container-login">*@
+<div style="max-width: 30em;" class="container largura-ajustavel p-0 pt-5">
+    <form>
+        <div class="card mb-5" style="margin-top: 30%; width: 32rem;">
+            <div class="card-body p4">
+                <div class="d-flex justify-content-center">
+                    <h3 class="titulo-card">Power GYM</h3>
+                </div>
+                <div class="d-flex justify-content-center container-icone mb-3">
+                    <img src="@Url.Content("~/img/logo.jpg")" style="height: 6rem;">
+                </div>
+                <div class="login">
+                    <label class="d-flex">
+                        <span style="color: var(--bs-body-color); font-weight: bold !important;">Usuário</span>
+                    </label>
+                    <div class="form-group">
+                        <input id="Email" class="form-control">
+                    </div>
+                    <label class="d-flex">
+                        <span style="color: var(--bs-body-color); font-weight: bold !important;">Senha</span>
+                    </label>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="password" id="Senha" class="form-control">
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-outline-primary py-2 my-0 px-4 " title="Visualizar a senha" data-bs-toggle="tooltip" onclick="visualizeSenha(this, event)" tabindex="-1">
+                                    <i style="color: black;" class="fa fa-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="col-12 btn btn-primary-dark py-2 my-0 px-4 mx-0 mt-2" tabindex="-1" onclick="autenticarUsuario(event)">
+                        <i style="color: white;" class="me-3 fa-solid fa-arrow-right-to-bracket"></i>Entrar
+                    </button>
+                    <a href="#" style="text-decoration: underline !important;" class="d-flex justify-content-end mt-3"> Esqueci minha senha</a>
+                </div>
+            </div>     
+        </div>
+    </form>
+</div>
+    <div style="text-align:center; color: white; font-weight: bold !important; font-size: 12pt;">Versão: 1.0.0</div>
+</div>
+
+<script defer>
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        hideBackgroundImage();
+    }, 2000);
+
+    setTimeout(() => {
+        slideFade();
+    }, 2300);
+});
+
+function hideBackgroundImage() {
+    const backgroundImage = document.querySelector('.background-imagem');
+    backgroundImage.classList.add('hide');
+}
+
+function slideFade() {
+    const backgroundImage = document.querySelector('.background-imagem')
+    const containerLogin = document.getElementById('container-login')
+
+    backgroundImage.classList.add('d-none');
+    containerLogin.classList.remove('d-none');
+    document.querySelector('html').style.overflowY = 'hidden';
+    containerLogin.classList.add('animated');
+    containerLogin.classList.add('rollIn');
+    containerLogin.style.animationFillMode = 'none';
+}
+
+    async function autenticarUsuario() {
+        const url = '@Url.Action("autenticar", "Autenticacao")';
+        const data = {
+            Email: Email.value,
+            Senha: Senha.value
+        }
+        const resposta = await postJSON(url, data);
+        if (resposta && resposta.success) {
+            const url = window.location.href.replace("login", "index");
+            window.location.href = url;
+        }
+    }
+</script>
