@@ -1,0 +1,95 @@
+﻿@page
+@model CS.Api.Pages.Novo.ProfessorNovoModel
+@{
+    Layout = "_CadastroEntidade";
+    ViewData["tituloFuncao"] = "Cadastro de professor";
+}
+
+<div class="row">
+    <div class="col-xl-4">
+        <label for="Nome" class="d-flex form-label">Nome</label>
+        <div class="form-group" data="">
+            <div class="input-group" data-target-input="nearest">
+                <input type="text" id="Nome" name="Nome" class="form-control" value="" autocomplete="off">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <label for="CPF" class="d-flex form-label">CPF</label>
+        <div class="form-group" data="">
+            <div class="input-group" data-target-input="nearest">
+                <input type="text" maxlength="11" id="CPF" name="CPF" class="form-control" value="" autocomplete="off">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <label for="DataNascimento" class="d-flex form-label">Data de nascimento</label>
+        <div class="form-group" data="">
+            <div class="input-group input-date" id="DataInicial_container" data-target-input="nearest">
+                <input type="text" maxlength="10" id="DataNascimento" name="DataNascimento" class="form-control date datepicker-input" data-target="#DataInicial_container" value="" data-mask="date" autocomplete="off">
+                <div class="input-group-append" data-target="#DataInicial_container">
+                    <button type="button" class="btn btn-outline-primary py-2 my-0 px-4 " data-bs-toggle="tooltip" tabindex="-1">
+                        <i class=" fa fa-calendar"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-4">
+        <label for="Email" class="d-flex form-label">Email</label>
+        <div class="form-group" data="">
+            <div class="input-group" data-target-input="nearest">
+                <input type="text" id="Email" name="Email" class="form-control" value="" autocomplete="off">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <label for="Senha" class="d-flex form-label">Senha</label>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="password" id="Senha" name="Senha" class="form-control">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-primary py-2 my-0 px-4 " title="Visualizar a senha" data-bs-toggle="tooltip" onclick="visualizeSenha(this, event)" tabindex="-1">
+                        <i style="color: black;" class="fa fa-eye-slash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script defer>
+EventDomContentLoaded(() => {
+    const botaoCancelar = document.getElementById('cancelar');
+    botaoCancelar.addEventListener('click', (ev) => {
+        ev.preventDefault();
+        new Modal().confirmacao("Tem certeza que deseja cancelar o cadastro ?", () => {
+            window.location.href = '/Cadastro/Professor';
+        }).render();
+    })
+    const botaoCadastrar = document.getElementById('gravar');
+    botaoCadastrar.addEventListener('click', gravarCadastro);
+});
+
+async function gravarCadastro(ev) {
+    ev.preventDefault();
+
+    const url = '@Url.Action("Adicionar", "Professor")';
+    const data = {
+        Nome: Nome.value,
+        Cpf: CPF.value,
+        DataNascimento: DataNascimento.value.convertaStrLocaleToDate(),
+        Email: Email.value,
+        Senha: Senha.value
+    }
+    const resposta = await postJSON(url, data);
+    if (resposta && resposta.success) {
+        new Modal().sucesso("Professor cadastrado com sucesso").depoisDeOcultar(() => {
+            window.location.href = '/Cadastro/Professor';
+        }).render();
+    }
+}
+</script>
