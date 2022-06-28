@@ -24,8 +24,15 @@ namespace CS.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, "", typeof(Response<AutenticacaoResponse>))]
         public async Task<IActionResult> Autenticar([FromBody] AutenticacaoModel model)
         {
-            var response = await _autenticacaoService.Autenticar(model);
-            return CustomResponse(response);
+            AutenticacaoResponse response = await _autenticacaoService.Autenticar(model);
+            if(response is not null){
+                AppendCookies(new Dictionary<string, string>
+                {
+                    ["token-jwt"] = response.Token
+                });
+            }
+
+            return CustomResponse();
         }
     }
 }

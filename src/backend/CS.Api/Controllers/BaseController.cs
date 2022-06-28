@@ -1,9 +1,11 @@
 ﻿using CS.Core.Notificador;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CS.Api.Controllers
 {
     [ApiController]
+    [Authorize]
     public abstract class BaseController : Controller
     {
         private readonly INotificador _notificador;
@@ -24,7 +26,7 @@ namespace CS.Api.Controllers
                 });
             }
 
-            return BadRequest(new
+            return Ok(new
             {
                 success = false,
                 errors = _notificador.ObterErros()
@@ -34,6 +36,15 @@ namespace CS.Api.Controllers
         private bool PossuiNotificacao()
         {
             return _notificador.PossuiNotificacao();
+        }
+
+        protected void AppendCookies(Dictionary<string, string> cookies)
+        {
+            foreach (KeyValuePair<string, string> cookie in cookies)
+            {
+                HttpContext.Response.Cookies.Append(cookie.Key, cookie.Value,
+                    new CookieOptions { Secure = true, HttpOnly = false });
+            }
         }
     }
 }
