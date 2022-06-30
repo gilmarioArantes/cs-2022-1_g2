@@ -10,7 +10,7 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace CS.Api.Controllers
 {
     [Route("[controller]")]
-    public class AutenticacaoController : BaseController
+    public class AutenticacaoController : BaseControllerAutenticacao
     {
         private readonly IAutenticacaoService _autenticacaoService;
 

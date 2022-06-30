@@ -11,7 +11,7 @@ namespace CS.Api.Middlewares
         {
             if (authorizeResult.Challenged && !authorizeResult.Succeeded)
             {
-                context.Response.Redirect($"/Login");
+                context.Response.Redirect($"/login");
                 return;
             }
 

@@ -28,7 +28,7 @@ async function postJSON(url, data) {
         headers: {
             'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest',
-            'authorization': 'Bearer ' + getCookie('token-jwt')
+            'authorization': getCookie('token-jwt')
         },
         redirect: 'follow',
         referrer: 'no-referrer',

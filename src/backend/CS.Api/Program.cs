@@ -1,4 +1,6 @@
 using CS.Api.Extensions;
+using CS.Api.Middlewares;
+using Microsoft.AspNetCore.Authorization;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +13,9 @@ builder.Services.AddIdentityConfiguration();
 builder.Services.AddSwaggerConfigurations();
 builder.Services.RegisterServices(builder.Configuration);
 builder.Services.AddRazorPages();
+builder.Services.AddSeguranca();
+builder.Services.AddScoped<IAuthorizationMiddlewareResultHandler, RequestAuthorizationMiddlewareResultHandler>();
 
-//builder.Services.AddScoped<IAuthorizationMiddlewareResultHandler, RequestAuthorizationMiddlewareResultHandler>();
 var app = builder.Build();
 app.Migrate();
 
