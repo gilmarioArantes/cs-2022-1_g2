@@ -3,8 +3,8 @@
 </div>
 
 
-<div align="center">SEDI - Secretaria de Estado de Desenvolvimento e Inovação</div>
-<div align="center">STI - Subsecretaria de Tecnologia da Informação</div>
+<div align="center">Titulo</div>
+<div align="center">Subtitulo</div>
 
 ## Histórico
 |**Versão**|**Data**|**Alteração no Documento**|**Autor**|
@@ -50,7 +50,7 @@
 
 **Dado**: que eu esteja autenticado como administrador;
 
-**E**: esteja na página de professores cadastrados.
+**E**: esteja na página de professores cadastrados;
 
 **Quando**: eu clicar para editar os dados de um professor;
 
@@ -60,7 +60,7 @@
 
 **Dado**: que eu esteja autenticado como administrador;
 
-**E**: esteja na página de professores cadastrados.
+**E**: esteja na página de professores cadastrados;
 
 **Quando**: eu clicar em remover o professor;
 
@@ -70,19 +70,19 @@
 
 **Dado**: que eu esteja autenticado como administrador;
 
-**E**: esteja na página de usuários
+**E**: esteja na página de usuários;
 
 **E**: eu clique no filtro de permissões de professores;
 
-**E**: selecione “Admin”
+**E**: selecione “Admin”;
 
-**Então**: o sistema deve listar todos os professores com privilégios de admin
+**Então**: o sistema deve listar todos os professores com privilégios de admin;
 
 **Cenário 6**: Obter professor por id
 
 **Dado**: que eu esteja autenticado como administrador;
 
-**E**: esteja na página de usuários
+**E**: esteja na página de usuários;
 
 **E**: eu clique no filtro de ID de professores;
 
