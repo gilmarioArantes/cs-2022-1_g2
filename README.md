@@ -6,15 +6,21 @@ Repositório definido para a manutenção do controle de versão dos artefatos g
 #### Requisitos:
 1. Requisito/funcionalidade: autenticação e cadastro de professor (como administrador)
 2. Requisito/funcionalidade: cadastrar aluno (como administrador)
-3. Requisito/funcionalidade: cadastrar treino (como professor) 
-4. Requisito/funcionalidade: associação de treino e aluno (como professor)
+3. Requisito/funcionalidade: cadastrar exercícios (como professor) 
+4. Requisito/funcionalidade: associação de treino (exercícios, dia de realização e aluno) (como professor)
 5. Requisito/funcionalidade: acesso ao treino (como aluno)
 
 ### Tecnologia empregada no desenvolvimento:
 
+### Linguagem: .NET 6
+
 ### Banco de Dados: PostgreSQL
 
 ### Local de deploy: AWS
+
+### Execucação aplicação:
+- Modo desenvolvimento: `docker-compose up -d` **(será iniciado apenas o container do PostgreSQL)**
+- Modo staging: `docker-compose -f docker-compose.yml -f docker-compose.staging.yml up -d` **(será iniciado o container da aplicação e do PostgreSQL)**
 
 ### Participantes:
 |#|Nome|Usuário|Papel|
@@ -30,8 +36,8 @@ Repositório definido para a manutenção do controle de versão dos artefatos g
 |Sprint|Atividade|Responsável|Início|Fim|Situação|Avaliação|
 |---|---|---|---|---|---|---|
 |1|Formação de Grupos. Definição de Temas|Equipe|03/06/2022|17/06/2022|Concluída|22/06/2022|
-|2|Implementação do Requisito 01|Equipe|18/06/2022|01/07/2022|Em Andamento|06/07/2022|
-|3|Implementação do Requisito 02|Equipe|02/07/2022|15/07/2022|A fazer|20/07/2022|
+|2|Implementação do Requisito 01|Equipe|18/06/2022|01/07/2022|Concluída|06/07/2022|
+|3|Implementação do Requisito 02|Equipe|02/07/2022|15/07/2022|Em Andamento|20/07/2022|
 |4|Implementação do Requisito 03|Equipe|16/07/2022|29/07/2022|A fazer|03/08/2022|
 |5|Implementação do Requisito 04|Equipe|30/07/2022|12/08/2022|A fazer|17/08/2022|
 |6|Implementação do Requisito 05|Equipe|13/08/2022|26/08/2022|A fazer|31/08/2022|
