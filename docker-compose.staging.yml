@@ -1,0 +1,25 @@
+﻿version: '3.8'
+
+services:
+  cs.api:
+    container_name: cs-api
+    image: cs-api
+    build:
+      context: ./src
+      dockerfile: CS.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Staging
+      - ASPNETCORE_URLS=http://+:5187
+    ports:
+      - 5187:5187
+    depends_on:
+      - postgres
+  
+  postgres:
+    container_name: cs-postgres
+    image: postgres:latest
+    hostname: localhost
+    ports:
+        - 5432:5432
+    environment:
+        - POSTGRES_PASSWORD=master
