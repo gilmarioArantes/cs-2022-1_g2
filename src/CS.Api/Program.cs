@@ -44,6 +44,6 @@ app.MapGet("/Sair", (HttpContext context) =>
 {
     context.Response.Cookies.Delete("token-jwt");
     context.Response.Redirect($"/login");
-});
+}).ExcludeFromDescription();
 
 app.Run();

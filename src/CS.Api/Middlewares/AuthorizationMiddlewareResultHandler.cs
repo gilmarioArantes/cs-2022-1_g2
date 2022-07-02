@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Net;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Policy;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CS.Api.Middlewares
 {
@@ -11,7 +13,7 @@ namespace CS.Api.Middlewares
         {
             if (authorizeResult.Challenged && !authorizeResult.Succeeded)
             {
-                context.Response.Redirect($"/login");
+                context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
                 return;
             }
 

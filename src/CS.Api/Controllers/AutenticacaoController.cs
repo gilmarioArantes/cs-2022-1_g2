@@ -24,7 +24,7 @@ namespace CS.Api.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, "", typeof(Response<AutenticacaoResponse>))]
         public async Task<IActionResult> Autenticar([FromBody] AutenticacaoModel model)
         {
-            AutenticacaoResponse response = await _autenticacaoService.Autenticar(model);
+            var response = await _autenticacaoService.Autenticar(model);
             if(response is not null){
                 AppendCookies(new Dictionary<string, string>
                 {
@@ -32,7 +32,7 @@ namespace CS.Api.Controllers
                 });
             }
 
-            return CustomResponse();
+            return CustomResponse(response);
         }
     }
 }
