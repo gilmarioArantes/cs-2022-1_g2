@@ -36,7 +36,18 @@ namespace CS.Data
         {
             SeedPerfilAdmin();
             SeedPerfilProfessor();
+            SeedPerfilAluno();
             SeedAdmin();
+        }
+
+        private void SeedPerfilAluno()
+        {
+            var perfil = new Perfil()
+            {
+                Name = "aluno",
+                NormalizedName = "ALUNO"
+            };
+            _ = _roleManager.CreateAsync(perfil).Result;
         }
 
         private void SeedPerfilProfessor()
