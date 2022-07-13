@@ -1,14 +1,15 @@
-﻿using CS.Domain.ValueObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS.Domain.Entidades
+namespace CS.Domain.ValueObjects
 {
     public class Endereco
     {
+        public Guid Id { get; set; }
+
         public string Logradouro { get; set; }
 
         public int Numero { get; set; }
@@ -17,9 +18,9 @@ namespace CS.Domain.Entidades
 
         public string Bairro { get; set; }
 
-        public Cidade Cidade { get; set; }
+        public virtual Cidade Cidade { get; set; }
 
-        public CEP CEP { get; set; }
+        public string CEP { get; set; }
 
     }
 }

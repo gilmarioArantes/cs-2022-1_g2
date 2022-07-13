@@ -1,4 +1,6 @@
-﻿namespace CS.Domain.Entidades
+﻿using CS.Domain.ValueObjects;
+
+namespace CS.Domain.Entidades
 {
     public abstract class Pessoa : EntidadeBase
     {
@@ -8,6 +10,6 @@
 
         public DateTime DataNascimento { get; set; }
 
-        public Endereco Endereco { get; set; }
+        public virtual Endereco Endereco { get; set; }
     }
 }
