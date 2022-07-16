@@ -1,4 +1,4 @@
-﻿namespace CS.Domain.Entidades
+﻿namespace CS.Domain.Enums
 {
     public enum EnumeradorEstado
     {      
