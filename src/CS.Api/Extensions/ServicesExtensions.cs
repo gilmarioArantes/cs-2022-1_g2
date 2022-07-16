@@ -18,6 +18,8 @@ namespace CS.Api.Extensions
             services.AddScoped<IAutenticacaoService, AutenticacaoService>();
             services.AddScoped<IProfessorService, ProfessorService>();
             services.AddScoped<IProfessorRepository, ProfessorRepository>();
+            services.AddScoped<IAlunoService, AlunoService>();
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
         }
 
         public static void Migrate(this WebApplication app)
