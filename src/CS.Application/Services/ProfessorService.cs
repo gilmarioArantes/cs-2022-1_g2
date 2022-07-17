@@ -4,6 +4,7 @@ using CS.Application.Response;
 using CS.Core.Notificador;
 using CS.Data.Interface;
 using CS.Domain.Entidades;
+using CS.Domain.ValueObjects;
 using Microsoft.AspNetCore.Identity;
 
 namespace CS.Application.Services
@@ -56,7 +57,17 @@ namespace CS.Application.Services
                 Nome = model.Nome,
                 DataNascimento = model.DataNascimento,
                 Cpf = model.Cpf,
-                UsuarioId = usuario.Id
+                UsuarioId = usuario.Id,
+                Endereco = new Endereco()
+                {
+                    Cidade = model.Endereco.Cidade,
+                    Numero = model.Endereco.Numero,
+                    Bairro = model.Endereco.Bairro,
+                    CEP = model.Endereco.CEP,
+                    Complemento = model.Endereco.Complemento,
+                    Estado = model.Endereco.Estado,
+                    Logradouro = model.Endereco.Logradouro
+                }
             };
 
             await _professorRepository.Adicionar(professor);
@@ -94,7 +105,17 @@ namespace CS.Application.Services
                 Email = professor.Usuario.Email,
                 Cpf = professor.Cpf,
                 DataNascimento = professor.DataNascimento,
-                Nome = professor.Nome
+                Nome = professor.Nome,
+                Endereco = new EnderecoResponse()
+                {
+                    Cidade = professor.Endereco.Cidade,
+                    Numero = professor.Endereco.Numero,
+                    Bairro = professor.Endereco.Bairro,
+                    CEP = professor.Endereco.CEP,
+                    Complemento = professor.Endereco.Complemento,
+                    Estado = professor.Endereco.Estado,
+                    Logradouro = professor.Endereco.Logradouro
+                }
             };
         }
 
@@ -108,7 +129,17 @@ namespace CS.Application.Services
                 Email = x.Usuario.Email,
                 Cpf = x.Cpf,
                 DataNascimento = x.DataNascimento,
-                Nome = x.Nome
+                Nome = x.Nome,
+                Endereco = new EnderecoResponse()
+                {
+                    Cidade = x.Endereco.Cidade,
+                    Numero = x.Endereco.Numero,
+                    Bairro = x.Endereco.Bairro,
+                    CEP = x.Endereco.CEP,
+                    Complemento = x.Endereco.Complemento,
+                    Estado = x.Endereco.Estado,
+                    Logradouro = x.Endereco.Logradouro
+                }
             }).ToList();
         }
 
@@ -123,6 +154,7 @@ namespace CS.Application.Services
             }
 
             professor.Atualizar(model.Cpf, model.DataNascimento, model.Nome);
+            professor.Endereco.Atualizar(model.Endereco.Logradouro, model.Endereco.Numero, model.Endereco.Complemento, model.Endereco.Bairro, model.Endereco.Cidade, model.Endereco.Estado, model.Endereco.CEP);
             await _professorRepository.CommitAsync();
         }
 

@@ -1,4 +1,6 @@
-﻿namespace CS.Application.Response
+﻿using CS.Domain.Enums;
+
+namespace CS.Application.Response
 {
     public abstract class PessoaResponse
     {
@@ -11,5 +13,7 @@
         public DateTime DataNascimento { get; set; }
 
         public string Email { get; set; }
+
+        public EnderecoResponse Endereco { get; set; }
     }
 }
