@@ -4,6 +4,7 @@ using CS.Application.Response;
 using CS.Core.Notificador;
 using CS.Data.Interface;
 using CS.Domain.Entidades;
+using CS.Domain.ValueObjects;
 using Microsoft.AspNetCore.Identity;
 
 namespace CS.Application.Services
@@ -56,7 +57,17 @@ namespace CS.Application.Services
                 Nome = model.Nome,
                 DataNascimento = model.DataNascimento,
                 Cpf = model.Cpf,
-                UsuarioId = usuario.Id
+                UsuarioId = usuario.Id,
+                Endereco = new Endereco()
+                {
+                    Cidade = model.Endereco.Cidade,
+                    Numero = model.Endereco.Numero,
+                    Bairro = model.Endereco.Bairro,
+                    CEP = model.Endereco.CEP,
+                    Complemento = model.Endereco.Complemento,
+                    Estado = model.Endereco.Estado,
+                    Logradouro = model.Endereco.Logradouro
+                }
             };
 
             await _alunoRepository.Adicionar(aluno);
@@ -94,7 +105,17 @@ namespace CS.Application.Services
                 Email = aluno.Usuario.Email,
                 Cpf = aluno.Cpf,
                 DataNascimento = aluno.DataNascimento,
-                Nome = aluno.Nome
+                Nome = aluno.Nome,
+                Endereco = new EnderecoResponse()
+                {
+                    Cidade = aluno.Endereco.Cidade,
+                    Numero = aluno.Endereco.Numero,
+                    Bairro = aluno.Endereco.Bairro,
+                    CEP = aluno.Endereco.CEP,
+                    Complemento = aluno.Endereco.Complemento,
+                    Estado = aluno.Endereco.Estado,
+                    Logradouro = aluno.Endereco.Logradouro
+                }
             };
         }
 
@@ -108,7 +129,17 @@ namespace CS.Application.Services
                 Email = x.Usuario.Email,
                 Cpf = x.Cpf,
                 DataNascimento = x.DataNascimento,
-                Nome = x.Nome
+                Nome = x.Nome,
+                Endereco = new EnderecoResponse()
+                {
+                    Cidade = x.Endereco.Cidade,
+                    Numero = x.Endereco.Numero,
+                    Bairro = x.Endereco.Bairro,
+                    CEP = x.Endereco.CEP,
+                    Complemento = x.Endereco.Complemento,
+                    Estado = x.Endereco.Estado,
+                    Logradouro = x.Endereco.Logradouro
+                }
             }).ToList();
         }
 
