@@ -106,6 +106,8 @@ namespace CS.Application.Services
                 Cpf = aluno.Cpf,
                 DataNascimento = aluno.DataNascimento,
                 Nome = aluno.Nome,
+                Altura = aluno.Altura,
+                Peso = aluno.Peso,
                 Endereco = new EnderecoResponse()
                 {
                     Cidade = aluno.Endereco.Cidade,
@@ -121,15 +123,17 @@ namespace CS.Application.Services
 
         public async Task<List<AlunoResponse>> Obter()
         {
-            var alunoes = await _alunoRepository.Obter();
+            var alunos = await _alunoRepository.Obter();
 
-            return alunoes?.Select(x => new AlunoResponse()
+            return alunos?.Select(x => new AlunoResponse()
             {
                 Id = x.Id,
                 Email = x.Usuario.Email,
                 Cpf = x.Cpf,
                 DataNascimento = x.DataNascimento,
                 Nome = x.Nome,
+                Altura = x.Altura,
+                Peso = x.Peso,
                 Endereco = new EnderecoResponse()
                 {
                     Cidade = x.Endereco.Cidade,
