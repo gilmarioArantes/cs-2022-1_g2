@@ -153,7 +153,8 @@ namespace CS.Application.Services
                 return;
             }
 
-            aluno.Atualizar(model.Cpf, model.DataNascimento, model.Nome);
+            aluno.Atualizar(model.Cpf, model.DataNascimento, model.Nome, model.Peso, model.Altura);
+            aluno.Endereco.Atualizar(model.Endereco.Logradouro, model.Endereco.Numero, model.Endereco.Complemento, model.Endereco.Bairro, model.Endereco.Cidade, model.Endereco.Estado, model.Endereco.CEP);
             await _alunoRepository.CommitAsync();
         }
 
