@@ -22,6 +22,17 @@ Repositório definido para a manutenção do controle de versão dos artefatos g
 - Modo desenvolvimento: `docker-compose up -d` **(será iniciado apenas o container do PostgreSQL)**
 - Modo staging: `docker-compose -f docker-compose.yml -f docker-compose.staging.yml up -d` **(será iniciado o container da aplicação e do PostgreSQL)**
 
+### Login aplicação como admin:
+
+- Utilizar endpoint `/Autenticacao/autenticar` com o body:
+
+```json
+{
+  "email": "admin@ufg.br",
+  "senha": "admin@UFG123"
+}
+```
+
 ### Participantes:
 |#|Nome|Usuário|Papel|
 |---|---|---|---|
