@@ -1,7 +1,4 @@
-﻿using CS.Domain.Enums;
-using CS.Domain.ValueObjects;
-
-namespace CS.Application.Model
+﻿namespace CS.Application.Model
 {
     public abstract class PessoaModel : BaseModel
     {
@@ -10,6 +7,10 @@ namespace CS.Application.Model
         public string Nome { get; set; }
 
         public string Cpf { get; set; }
+
+        public decimal Peso { get; set; }
+
+        public decimal Altura { get; set; }
 
         public DateTime DataNascimento { get; set; }
 
