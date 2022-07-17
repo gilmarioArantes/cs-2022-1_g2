@@ -154,6 +154,7 @@ namespace CS.Application.Services
             }
 
             professor.Atualizar(model.Cpf, model.DataNascimento, model.Nome);
+            professor.Endereco.Atualizar(model.Endereco.Logradouro, model.Endereco.Numero, model.Endereco.Complemento, model.Endereco.Bairro, model.Endereco.Cidade, model.Endereco.Estado, model.Endereco.CEP);
             await _professorRepository.CommitAsync();
         }
 
