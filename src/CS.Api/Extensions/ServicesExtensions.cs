@@ -17,9 +17,11 @@ namespace CS.Api.Extensions
             services.AddScoped<Seeder>();
             services.AddScoped<IAutenticacaoService, AutenticacaoService>();
             services.AddScoped<IProfessorService, ProfessorService>();
+            services.AddScoped<IExercicioService, ExercicioService>();
             services.AddScoped<IProfessorRepository, ProfessorRepository>();
             services.AddScoped<IAlunoService, AlunoService>();
             services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<IExercicioRepository, ExercicioRepository>();
         }
 
         public static void Migrate(this WebApplication app)
