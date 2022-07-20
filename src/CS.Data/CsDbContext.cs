@@ -35,5 +35,6 @@ namespace CS.Data
         public DbSet<UsuarioPermissao> UsuarioPermissao { get; set; }
         public DbSet<UsuarioToken> UsuarioToken { get; set; }
         public DbSet<Professor> Professor { get; set; }
+        public DbSet<Exercicio> Exercicio { get; set; }
     }
 }
